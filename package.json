@@ -1,0 +1,22 @@
+{
+  "name": "dropdowm",
+  "version": "1.0.0",
+  "description": "Test task",
+  "main": "server/server.js",
+  "engines": {
+    "node": "10.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/n0mid/dropdown.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/n0mid/dropdown/issues"
+  },
+  "homepage": "https://github.com/n0mid/dropdown#readme"
+}

@@ -5,7 +5,8 @@ var path = require('path');
 
 const data = require('../data/data.json');
 
-const port = 3000;
+const port = process.env.PORT || 5000;
+
 
 const requestHandler = (request, response) => {
 
