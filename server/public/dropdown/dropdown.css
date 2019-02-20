@@ -1,0 +1,118 @@
+.dropdown-wrapper {
+    position: relative;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+
+}
+.dropdown-wrapper .dropdown-input-icon {
+    position: absolute;
+    top: 14px;
+    right: 12px;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #aaa;
+    cursor: pointer;
+}
+.dropdown-wrapper .dropdown-input {
+    height: 32px;
+    line-height: 32px;
+    width: 100%;
+    padding: 0 35px 0 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: 0;
+    border: none;
+    display: inline-block;
+
+}
+.dropdown-wrapper .dropdown-list-block {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    max-height: 300px;
+    top: 100%;
+    left: -1px;
+    right: -1px;
+    border: 1px solid #ccc;
+    overflow: auto;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2);
+
+}
+
+.dropdown-wrapper .dropdown-list-block.dropdown-list-block__show {
+    display: block;
+}
+
+.dropdown-wrapper .dropdown-list-block .dropdown-item {
+    display: block;
+    height: 64px;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background-color: #fff;
+    position: relative;
+    box-sizing: border-box;
+    cursor: pointer;
+
+}
+.dropdown-wrapper .dropdown-list-block .dropdown-item:hover {
+    background-color: #eee;
+}
+.dropdown-wrapper .dropdown-list-block .dropdown-item:last-child {
+    border-bottom: none;
+}
+.dropdown-wrapper .dropdown-list-block .dropdown-list-message {
+    font-size: 16px;
+    color: #aaa;
+    padding: 10px;
+}
+
+.dropdown-wrapper .dropdown-list-block .dropdown-item.dropdown-item__with-avatar {
+    padding-left: 64px;
+}
+.dropdown-wrapper .dropdown-list-block .dropdown-item .dropdown-item-avatar {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+}
+
+.dropdown-wrapper .dropdown-list-block .dropdown-item .dropdown-item-title {
+    font-weight: 600;
+    margin-top: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropdown-wrapper .dropdown-list-block .dropdown-item .dropdown-item-subtitle {
+    color: #aaa;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dropdown-wrapper .dropdown-selected-list {
+
+}
+
+.dropdown-wrapper .dropdown-selected-list .dropdown-selected-item {
+    background-color: #ececec;
+    border-radius: 2px;
+    display: inline-block;
+    padding: 5px;
+    margin-right: 2px;
+}
+
+.dropdown-wrapper .dropdown-selected-list .dropdown-selected-item .dropdown-selected-item-remove {
+    margin-left:5px;
+    cursor: pointer;
+    padding: 0 5px;
+    background: transparent;
+    border: none;
+    outline: 0;
+}
