@@ -68,7 +68,8 @@ const _search = (response, query) => {
 
         return searchQuery.some((q => item.firstname.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
                                       item.lastname.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
-                                      item.additionalInfo.toLowerCase().indexOf(q.toLowerCase()) !== -1
+                                      item.additionalInfo.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
+                                      item.domain.toLowerCase().indexOf(q.toLowerCase()) !== -1
         ));
     });
 

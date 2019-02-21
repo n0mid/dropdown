@@ -11,7 +11,10 @@ for (let i= 0; i < 10000; i++) {
 
        firstnameList[random(0, firstnameList.length - 1)],
        lastnameList[random(0, lastnameList.length -1)],
-       additionalInfoList[random(0, additionalInfoList.length -1)]));
+       additionalInfoList[random(0, additionalInfoList.length -1)],
+       { domain: `https://vk.com/${i}domain_name` })
+   );
+
 }
 
 fs.writeFile("../data/data.json", JSON.stringify(result) , function(err) {

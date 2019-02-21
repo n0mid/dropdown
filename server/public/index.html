@@ -3,45 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width">
-    <title>Title</title>
+    <title>Dropdown</title>
     <link href="dropdown/dropdown.css" rel="stylesheet">
     <style>
         h1 {
             padding: 0 10px;
+            margin-bottom: 0;
         }
         .column {
-            width: calc(50% - 42px);
+            width: calc(50% - 22px);
             padding: 0 10px 20px 10px;
             display: inline-block;
+        }
+        .example {
+            padding: 10px;
+        }
+        .example-code {
+            border: 1px solid #cccccc;
+            background-color: #fcfcfc;
+            border-radius: 2px;
+            padding: 10px;
         }
     </style>
 </head>
 <body>
 <h1>
-    Demo for dropdown
+    Демо
 </h1>
+<div class="example">
+<h4>Пример данных</h4>
+
+    <pre class="example-code">
+        {
+            "avatar": "https://randomuser.me/api/portraits/men/93.jpg",
+            "firstname":"Тимур",
+            "lastname":"Терентьев",
+            "additionalInfo":"Белгородский государственный национальный исследовательский университет",
+            "domain":"https://vk.com/2domain_name"
+        }</pre>
+</div>
 <div class="column">
-    <h4>Client data with multiselect and avatar</h4>
+    <h4>Данные на клиенте с выбором нескольких пользователей и отображение аватара</h4>
     <div id="dropdown1"></div>
 </div>
 
 <div class="column">
-    <h4>Server data with multiselect and avatar</h4>
+    <h4>Данные на сервере с выбором нескольких пользователей и отображение аватара</h4>
     <div id="dropdown2"></div>
 </div>
 
 <div class="column">
-    <h4>Client data without multiselect and with avatar</h4>
+    <h4>Данные на клиенте с выбором одного пользователя и отображение аватара</h4>
     <div id="dropdown3"></div>
 </div>
 
 <div class="column">
-    <h4>Client data with multiselect and without avatar</h4>
+    <h4>Данные на сервере с выбором нескольких пользователей и без отображение аватара</h4>
     <div id="dropdown4"></div>
 </div>
 
 <div class="column">
-    <h4>Server data without multiselect and avatar</h4>
+    <h4>Данные на сервере с выбором одного пользователя и без отображение аватара</h4>
     <div id="dropdown5"></div>
 </div>
 

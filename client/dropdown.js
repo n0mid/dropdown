@@ -21,7 +21,11 @@ window.initDropdown = window.initDropdown || function (selector, options) {
         throw new Error('Invalid selector: ' + selector);
     }
 
-    options = Object.assign({}, defaultOptions, options);
+    for (var key in defaultOptions) {
+        if (options[key] === undefined) {
+            options[key] = defaultOptions[key];
+        }
+    }
 
     if (Array.isArray(options.data)) {
         isClientData = true;
@@ -227,15 +231,13 @@ window.initDropdown = window.initDropdown || function (selector, options) {
     function _getAllQueries(query) {
         query = query.toLowerCase();
 
-        var russian = ["а", "б", "в", "г", "д", "е", "ж", "з", "и", "й", "к", "л", "м", "н", "о", "п", "р", "с", "т", "у", "ф", "х", "ц", "ч", "ш", "щ", "ъ", "ы", "ь", "э", "ю", "я"];
-
         var translitToRus = {
             "a": "а",
             "b": "б",
             "v": "в",
             "g": "г",
             "d": "д",
-            "e": "э",
+            "e": "е",
             "zh": "ж",
             "z": "з",
             "i": "и",
@@ -301,13 +303,13 @@ window.initDropdown = window.initDropdown || function (selector, options) {
             ">": "ю",
             "z": "я"
         };
-        var engTransiltToRus = {
+        var engTranslitToRus = {
             "ф": "а",
             "и": "б",
             "м": "в",
             "п": "г",
             "в": "д",
-            "у": "э",
+            "у": "е",
             "яр": "ж",
             "я": "з",
             "ш": "и",
@@ -333,22 +335,43 @@ window.initDropdown = window.initDropdown || function (selector, options) {
             "нф": "я"
         };
 
-        var result = [query],
+        return [
+            query,
+            _getQuery(query, engToRus),
+            _getQuery(query, translitToRus),
+            _getQuery(query, engTranslitToRus)
+        ];
+    }
+
+    function _getQuery(query, letterMap) {
+        var i,
+            result = '',
             length = query.length,
-            i,
-            fromTranslit = '',
-            fromEng = '',
-            fromEngTranslit = '';
+            subQuery;
 
         for (i = 0; i < length; i++) {
-            fromTranslit += (translitToRus[query[i]] ? translitToRus[query[i]] : query[i]);
-            fromEng += (engToRus[query[i]] ? engToRus[query[i]] : query[i]);
-            fromEngTranslit += (engTransiltToRus[query[i]] ? engTransiltToRus[query[i]] : query[i]);
-        }
+            if (i + 3 < length ) {
+                subQuery = query.substring(i, i + 4);
+                if (letterMap[subQuery]) {
+                    result += letterMap[subQuery];
+                    i = i + 3;
 
-        result.push(fromTranslit);
-        result.push(fromEng);
-        result.push(fromEngTranslit);
+                    continue;
+                }
+            }
+
+            if (i + 1 < length ) {
+                subQuery = query.substring(i, i + 2);
+                if (letterMap[subQuery]) {
+                    result += letterMap[subQuery];
+                    i = i + 1;
+
+                    continue;
+                }
+            }
+
+            result += (letterMap[query[i]] ? letterMap[query[i]] : query[i]);
+        }
 
         return result;
     }
@@ -373,4 +396,5 @@ window.initDropdown = window.initDropdown || function (selector, options) {
             }
         }
     }
+
 };
