@@ -28,7 +28,7 @@
 </head>
 <body>
 <h1>
-    Демо
+    Описание
 </h1>
 <div class="example">
 <h4>Пример данных</h4>
@@ -42,6 +42,27 @@
             "domain":"https://vk.com/2domain_name"
         }</pre>
 </div>
+<div class="column">
+   <h4>Пример использования с клиентскими данными</h4>
+    <pre class="example-code">
+        initDropdown('#dropdown1', {
+             data: [...],
+             multiSelect: true,
+             showAvatar: true
+        });</pre>
+</div>
+<div class="column">
+    <h4>Пример использования с серверными данными</h4>
+    <pre class="example-code">
+        initDropdown('#dropdown2', {
+             url: url,
+             multiSelect: true,
+             showAvatar: true
+        });</pre>
+</div>
+<h1>
+    Демо
+</h1>
 <div class="column">
     <h4>Данные на клиенте с выбором нескольких пользователей и отображение аватара</h4>
     <div id="dropdown1"></div>
@@ -58,7 +79,7 @@
 </div>
 
 <div class="column">
-    <h4>Данные на сервере с выбором нескольких пользователей и без отображение аватара</h4>
+    <h4>Данные на клиенте с выбором нескольких пользователей и без отображение аватара</h4>
     <div id="dropdown4"></div>
 </div>
 
@@ -90,21 +111,21 @@
             data: data,
             multiSelect: false,
             showAvatar: true
-        })
+        });
 
 
         initDropdown('#dropdown4', {
             data: data,
             multiSelect: true,
             showAvatar: false
-        })
+        });
 
 
         initDropdown('#dropdown5', {
             url: '/api/search',
             multiSelect: false,
             showAvatar: false
-        })
+        });
     });
 </script>
 </html>
