@@ -32,6 +32,8 @@ window.initDropdown = window.initDropdown || function (selector, options) {
         source = filteredSource = options.data;
     } else if (typeof options.url === 'string') {
         isClientData = false;
+
+        _renderItemsFromServer([]);
     } else {
         throw new Error('Invalid data');
     }
@@ -73,7 +75,7 @@ window.initDropdown = window.initDropdown || function (selector, options) {
             if (listElem) {
                 setTimeout(function () {
                     listElem.classList.remove('dropdown-list-block__show');
-                }, 100);
+                }, 300);
             }
         });
 
@@ -85,7 +87,7 @@ window.initDropdown = window.initDropdown || function (selector, options) {
                 _renderItems();
             } else {
                 if (query.length > 2) {
-                    _renderItemsFromServer(_getAllQueries(query));
+                    _renderItemsFromServer(_getAllQueries(query), true);
                 }
             }
         }, 300));
@@ -375,7 +377,7 @@ window.initDropdown = window.initDropdown || function (selector, options) {
         return result;
     }
 
-    function _renderItemsFromServer(query) {
+    function _renderItemsFromServer(query, showList) {
         var xhr = new XMLHttpRequest();
 
         xhr.open('GET', options.url + '?query=' + query.join(','));
@@ -391,7 +393,10 @@ window.initDropdown = window.initDropdown || function (selector, options) {
 
                 filteredSource = JSON.parse(xhr.response);
                 _renderItems();
-                listElem.classList.add('dropdown-list-block__show');
+
+                if (showList) {
+                    listElem.classList.add('dropdown-list-block__show');
+                }
             }
         }
     }

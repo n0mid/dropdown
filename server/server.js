@@ -55,23 +55,22 @@ const _indexPage = (response) => {
 };
 
 const _search = (response, query) => {
-
+    let result;
+    console.log(query.query);
     if (!query.query) {
-        response.writeHead(400, { 'Content-Type': 'text/plain' });
-        response.end('Search query is empty!');
-        return;
+        result  = data.slice(0, 100);
+    } else {
+        const searchQuery = query.query.toString().split(',');
+
+        result = data.filter((item) => {
+
+            return searchQuery.some((q => item.firstname.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
+                    item.lastname.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
+                    item.additionalInfo.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
+                    item.domain.toLowerCase().indexOf(q.toLowerCase()) !== -1
+            ));
+        });
     }
-
-    const searchQuery =  query.query.toString().split(',');
-
-    const result = data.filter((item) => {
-
-        return searchQuery.some((q => item.firstname.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
-                                      item.lastname.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
-                                      item.additionalInfo.toLowerCase().indexOf(q.toLowerCase()) !== -1 ||
-                                      item.domain.toLowerCase().indexOf(q.toLowerCase()) !== -1
-        ));
-    });
 
     response.writeHead(200, { 'Content-Type': 'application/json' });
     response.end(JSON.stringify(result));
